@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SuggestionHorizontalView extends StatelessWidget {
   const SuggestionHorizontalView({Key? key}) : super(key: key);
@@ -11,8 +10,8 @@ class SuggestionHorizontalView extends StatelessWidget {
       physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
       child: DefaultTextStyle(
-        style: GoogleFonts.spaceGrotesk()
-            .copyWith(fontSize: 20.0, color: Color(0xff2843ed)),
+        style: TextStyle(
+            fontFamily: "Space", fontSize: 20.0, color: Color(0xff2843ed)),
         child: Row(
           children: [
             ...List.generate(

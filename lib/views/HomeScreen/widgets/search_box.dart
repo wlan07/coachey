@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart' as f;
 
 class SearchBox extends StatelessWidget {
   const SearchBox({Key? key}) : super(key: key);
@@ -19,8 +18,9 @@ class SearchBox extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(25.0))),
             padding: EdgeInsets.all(15.0),
             child: Text("Enter topic , trainer, or keywords",
-                style: f.GoogleFonts.spaceGrotesk()
-                    .copyWith(fontSize: 20.0, fontWeight: FontWeight.w100)),
+                style: TextStyle(
+                  fontFamily:  "Space",
+                  fontSize: 20.0, fontWeight: FontWeight.w100)),
           ),
           Align(
             alignment: Alignment.centerRight,

@@ -1,7 +1,7 @@
-import 'package:coach_finder/detailed_panel.dart';
-import 'package:coach_finder/stacked_models.dart';
+import 'package:coach_finder/views/PanelViewScreen/panel_view.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart' as fonts;
+
+import '../../../models/expanded_panel.dart';
 
 class ExpandedPanel extends StatelessWidget {
   const ExpandedPanel({
@@ -11,10 +11,11 @@ class ExpandedPanel extends StatelessWidget {
 
   final ExpandedModel model;
 
-  void _onTap(BuildContext context) {
+  void _onSlideUp(BuildContext context) {
     Navigator.of(context).push(PageRouteBuilder(
         reverseTransitionDuration: const Duration(milliseconds: 400),
         transitionDuration: const Duration(milliseconds: 500),
+        opaque: false,
         pageBuilder: (_, __, ___) {
           return FadeTransition(
             opacity: __,
@@ -27,17 +28,21 @@ class ExpandedPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return FractionallySizedBox(
       alignment: model.alignment,
       widthFactor: 0.8,
       child: GestureDetector(
-        onTap: () => _onTap(context),
+        onVerticalDragStart: (_) {
+          _onSlideUp(context);
+        },
         child: Hero(
           tag: "BOX_COLOR_TRANSITION${model.title}",
           child: Material(
             color: Colors.transparent,
             child: DefaultTextStyle(
-              style: fonts.GoogleFonts.luckiestGuy().copyWith(
+              style: TextStyle(
+                fontFamily: "LuckiestGuy",
                 color: Colors.white,
                 fontSize: 22.0,
               ),

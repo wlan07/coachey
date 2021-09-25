@@ -1,6 +1,7 @@
-import 'package:coach_finder/coach_details.dart';
+import 'package:coach_finder/views/CoachScreen/coach_details.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart' as f;
+
+import '../../../models/coach_model.dart';
 
 class CoachCard extends StatelessWidget {
   const CoachCard(
@@ -65,7 +66,7 @@ class CoachCard extends StatelessWidget {
                           image: DecorationImage(
                               fit: BoxFit.cover,
                               alignment: Alignment.center,
-                              image: Image.network(coachModel.imageUrl).image)),
+                              image: Image.asset(coachModel.imageUrl).image)),
                     ),
                   ),
                 ),
@@ -77,22 +78,33 @@ class CoachCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
+                            child: FittedBox(
                           child: Text(
                             coachModel.fullName,
                             style: TextStyle(fontSize: 30.0),
                           ),
-                        ),
+                          alignment: Alignment.topLeft,
+                          fit: BoxFit.scaleDown,
+                        )),
                         Expanded(
-                          child: Text(
-                            coachModel.fieldName,
-                            style: f.GoogleFonts.spaceGrotesk(fontSize: 20.0),
+                          child: FittedBox(
+                            alignment: Alignment.centerLeft,
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              coachModel.fieldName,
+                              style: TextStyle(
+                                  fontFamily: "Space", fontSize: 20.0),
+                              maxLines: 2,
+                            ),
                           ),
                         ),
                         Expanded(
                           child: Text(
                               coachModel.nbChallenge.toString() + " Challenges",
-                              style: f.GoogleFonts.spaceGrotesk().copyWith(
-                                  fontSize: 15.0, color: Colors.grey)),
+                              style: TextStyle(
+                                  fontFamily: "Space",
+                                  fontSize: 15.0,
+                                  color: Colors.grey)),
                         )
                       ],
                     ),
@@ -103,17 +115,4 @@ class CoachCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class CoachModel {
-  final String imageUrl;
-  final String fullName;
-  final String fieldName;
-  final int nbChallenge;
-
-  const CoachModel(
-      {required this.imageUrl,
-      required this.fullName,
-      required this.fieldName,
-      required this.nbChallenge});
 }

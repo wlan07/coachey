@@ -1,10 +1,7 @@
-import 'package:coach_finder/search_box.dart';
-import 'package:coach_finder/suggestion_horizontal_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart' as fonts;
 
-import 'stacked_models.dart';
+import 'views/HomeScreen/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,64 +20,11 @@ class MyApp extends StatelessWidget {
       title: 'Coachey',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: Colors.blue,
-          brightness: Brightness.dark,
-          ),
+        primarySwatch: Colors.blue,
+        brightness: Brightness.dark,
+      ),
       home: const HomeScreen(),
     );
   }
 }
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void dispose() {
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: Color(0xff546bff),
-      child: DefaultTextStyle(
-        maxLines: 2,
-        style: fonts.GoogleFonts.luckiestGuy().copyWith(
-          color: Colors.white,
-          fontSize: 45.0,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 25.0, right: 25.0, top: 50.0, bottom: 10.0),
-              child: Text(
-                "SEARCH FOR YOUR NEXT CHALLENGE",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  shadows: [Shadow(color: Color(0xff080517), blurRadius: 5.0)],
-                ),
-              ),
-            ),
-            const SearchBox(),
-            const SuggestionHorizontalView(),
-            const Spacer(
-            ),
-            const Expanded(
-              flex: 5,
-              child: StackedPanels()
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}

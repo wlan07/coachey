@@ -1,24 +1,29 @@
-import 'package:coach_finder/expanded_panel.dart';
+import 'package:coach_finder/views/HomeScreen/widgets/bottom_nav_bar.dart';
+import 'package:coach_finder/views/HomeScreen/widgets/expanded_panel.dart';
 import 'package:flutter/material.dart';
+
+import '../../../models/expanded_panel.dart';
+
 
 class StackedPanels extends StatelessWidget {
   const StackedPanels({Key? key}) : super(key: key);
 
+
   static const List<ExpandedModel> _list = [
     ExpandedModel(
-      textColor: Colors.white,
+        textColor: Colors.white,
         alignment: Alignment.centerLeft,
         color: Color(0xff080517),
         title: "TOP CHALLENGES",
         trailing: "256"),
     ExpandedModel(
-      textColor: Colors.white,
+        textColor: Colors.white,
         alignment: Alignment.centerRight,
         color: Color(0xff1f1edb),
         title: "POPULAR COACHES",
-        trailing: "55"),
+        trailing: "05"),
     ExpandedModel(
-      textColor: Colors.blue,
+        textColor: Colors.blue,
         alignment: Alignment.centerLeft,
         color: Colors.white,
         title: "FOR YOU",
@@ -48,27 +53,16 @@ class StackedPanels extends StatelessWidget {
                       child: ExpandedPanel(
                         model: _list[index],
                       ),
-                    ))
+                    )),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: BottomNavBar(
+                height: height,
+              )
+            )
           ],
         );
       },
     );
   }
-}
-
-class ExpandedModel {
-
-  final String title;
-  final String trailing;
-  final Color color;
-  final Alignment alignment;
-  final Color textColor;
-
-  const ExpandedModel(
-      {required this.textColor,
-      required this.title,
-      required this.color,
-      required this.alignment,
-      required this.trailing});
-
 }

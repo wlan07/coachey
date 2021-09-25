@@ -1,5 +1,5 @@
 import 'dart:developer';
-import 'package:coach_finder/coach_expanded_panel.dart';
+import 'package:coach_finder/views/CoachScreen/widgets/coach_expanded_panel.dart';
 import 'package:flutter/material.dart';
 
 class CoachStackedPanels extends StatefulWidget {
@@ -20,7 +20,7 @@ class _CoachStackedPanelsState extends State<CoachStackedPanels>
     return [height * 0.2, height * 0.35, height * 0.55];
   }
 
-  static const List<double> bottomMarginFactor = [0.2, 0.1, 0.09];
+  static const List<double> bottomMarginFactor = [0.2, 0.1, 0.03];
 
   List<double> _getHeadersHeight(double height) {
     return [height * 0.12, height * 0.1, height * 0.1];
@@ -137,7 +137,7 @@ class _CoachStackedPanelsState extends State<CoachStackedPanels>
                         );
                       },
                       child: CoachExpandedPanel(
-                        topmargin: constraints.maxHeight * 0.02,
+                        topmargin: constraints.maxHeight * 0.05,
                         bottomMargin: _height * bottomMarginFactor[index],
                         headerHeight: _headersHeight[index],
                         onSlideUp: _onSlideUp,

@@ -1,7 +1,8 @@
 import 'dart:math';
 
-import 'package:coach_finder/available_challenges.dart';
-import 'package:coach_finder/coach_about_details.dart';
+import 'package:coach_finder/views/CoachScreen/widgets/available_challenges.dart';
+import 'package:coach_finder/views/CoachScreen/widgets/coach_about_details.dart';
+import 'package:coach_finder/views/CoachScreen/widgets/straggered_photos.dart';
 import 'package:flutter/material.dart';
 
 class CoachExpandedPanel extends StatefulWidget {
@@ -42,12 +43,19 @@ class _CoachExpandedPanelState extends State<CoachExpandedPanel> {
   Animation<double> get animation => widget.animation;
 
   late List<Widget> _headers;
-  Widget get _getBody{
-        switch (widget.index){
-          case 1:
-            return AvailableChallenge();
-            default: return CoachAboutDetails();
-        }
+  Widget get _getBody {
+    switch (widget.index) {
+      case 1:
+        return DefaultTextStyle(
+            style: DefaultTextStyle.of(context)
+                .style
+                .copyWith(color: Colors.white),
+            child: const AvailableChallenge());
+      case 2:
+        return const StraggredPhotos();
+      default:
+        return const CoachAboutDetails();
+    }
   }
 
   @override
@@ -62,9 +70,9 @@ class _CoachExpandedPanelState extends State<CoachExpandedPanel> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Connie Fox"),
+                Text("Lorem Ipsum"),
                 Text(
-                  "Nutritionist",
+                    "Lorem",
                   style: TextStyle(
                       color: Colors.blue.withOpacity(0.6),
                       fontSize: 20.0,
@@ -89,7 +97,8 @@ class _CoachExpandedPanelState extends State<CoachExpandedPanel> {
                       style: TextStyle(
                           color: Colors.blue.withOpacity(0.6),
                           fontSize: 20.0,
-                          fontWeight: FontWeight.w100),
+                          fontFamily: "Space",
+                          fontWeight: FontWeight.w600),
                     ),
                     Transform(
                       transform: Matrix4.identity()
@@ -109,12 +118,24 @@ class _CoachExpandedPanelState extends State<CoachExpandedPanel> {
         children: [
           Text(
             "Available challenges",
-            style: TextStyle(fontSize: 22),
+            style: TextStyle(fontSize: 22, color: Colors.white),
+          ),
+          Spacer(),
+          Text(
+            "/03",
+            style: TextStyle(fontSize: 18, color: Colors.grey),
           )
         ],
       ),
       Row(
-        children: [Text("Photos", style: TextStyle(fontSize: 22))],
+        children: [
+          Text("Photos", style: TextStyle(fontSize: 22, color: Colors.white)),
+          Spacer(),
+          Text(
+            "/15",
+            style: TextStyle(fontSize: 18, color: Colors.grey),
+          )
+        ],
       )
     ];
     _panelsStatus = [false, false, false];
@@ -129,7 +150,7 @@ class _CoachExpandedPanelState extends State<CoachExpandedPanel> {
             child: __, offset: _getOffset * widget.animation.value);
       },
       child: GestureDetector(
-        onTap: () {
+        onVerticalDragStart: (_) {
           widget.onSlideUp(widget.index, _panelsStatus);
           _panelsStatus[widget.index] = !_panelsStatus[widget.index];
         },

@@ -1,7 +1,7 @@
-import 'package:coach_finder/coach_card.dart';
-import 'package:coach_finder/coach_stacked_panels.dart';
+import 'package:coach_finder/views/CoachScreen/widgets/coach_stacked_panels.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart' as f;
+
+import '../../models/coach_model.dart';
 
 class CoachDetails extends StatefulWidget {
   CoachDetails({Key? key, required this.coachModel, required this.tag})
@@ -35,7 +35,8 @@ class _CoachDetailsState extends State<CoachDetails> {
     return Material(
         color: Color(0xff1f1edb),
         child: DefaultTextStyle(
-          style: f.GoogleFonts.luckiestGuy().copyWith(
+          style: TextStyle(
+            fontFamily: "LuckiestGuy",
             color: Colors.blue,
             fontWeight: FontWeight.w500,
             fontSize: 35.0,
@@ -64,7 +65,7 @@ class _CoachDetailsState extends State<CoachDetails> {
                                       image: DecorationImage(
                                           fit: BoxFit.cover,
                                           alignment: value.value,
-                                          image: Image.network(
+                                          image: Image.asset(
                                                   widget.coachModel.imageUrl)
                                               .image)),
                                 );

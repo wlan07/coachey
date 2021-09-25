@@ -1,12 +1,9 @@
 import 'dart:developer';
-
-import 'package:coach_finder/coach_card.dart';
-import 'package:coach_finder/stacked_models.dart';
+import 'package:coach_finder/data/data.dart';
+import 'package:coach_finder/views/CoachScreen/widgets/coach_card.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart' as f;
 
-const String IMAGEUrl =
-    "https://www.biography.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTc5OTk2ODUyMTMxNzM0ODcy/gettyimages-1229892983-square.jpg";
+import '../../models/expanded_panel.dart';
 
 class DetailedPanel extends StatefulWidget {
   const DetailedPanel({Key? key, required this.model}) : super(key: key);
@@ -49,7 +46,8 @@ class _DetailedPanelState extends State<DetailedPanel>
           child: Material(
             color: widget.model.color,
             child: DefaultTextStyle(
-              style: f.GoogleFonts.luckiestGuy().copyWith(
+              style: TextStyle(
+                fontFamily: "LuckiestGuy",
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 45.0,
@@ -115,14 +113,15 @@ class _DetailedPanelState extends State<DetailedPanel>
           child: Material(
             color: Colors.transparent,
             child:DefaultTextStyle(
-              style: f.GoogleFonts.luckiestGuy().copyWith(
+              style: TextStyle(
+                fontFamily: "LuckiestGuy",
                 color: Colors.white,
                 letterSpacing: 1.0,
                 fontWeight: FontWeight.bold,
                 fontSize: 30.0,
                 ),
               child: GridView.builder(
-                itemCount: 20,
+                itemCount: MyData.coaches.length,
                 physics: const BouncingScrollPhysics(),
                 padding: EdgeInsets.all(20.0),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -135,11 +134,7 @@ class _DetailedPanelState extends State<DetailedPanel>
                   return CoachCard(
                     index: __,
                     color: widget.model.textColor,
-                    coachModel: CoachModel(
-                        imageUrl: IMAGEUrl,
-                        fullName: "Elon Musk",
-                        fieldName: "Psychologist",
-                        nbChallenge: 3),
+                    coachModel: MyData.coaches[__],
                     animation: __ < 6
                         ? animationController.view
                         : AlwaysStoppedAnimation(1.0),

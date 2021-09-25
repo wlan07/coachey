@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class CoachAboutDetails extends StatelessWidget {
   const CoachAboutDetails({Key? key}) : super(key: key);
@@ -32,7 +31,7 @@ class CoachAboutDetails extends StatelessWidget {
                           text:
                               "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, ")
                     ]),
-                    style: GoogleFonts.spaceGrotesk().copyWith(fontSize: 20.0)),
+                    style: TextStyle(fontFamily: "Space", fontSize: 20.0)),
               ),
               Spacer()
             ],
@@ -68,9 +67,11 @@ class CoachAboutDetails extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                      "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years",
-                      style: GoogleFonts.spaceGrotesk().copyWith(
-                          fontSize: 16.0, color: Colors.blue.withOpacity(0.6))),
+                      "It is a long established fact that a redable conten-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years",
+                      style: TextStyle(
+                          fontFamily: "Space",
+                          fontSize: 16.0,
+                          color: Colors.blue.withOpacity(0.6))),
                 )
               ],
             ),
@@ -97,8 +98,7 @@ class ExpertiseArea extends StatelessWidget {
               (index) => Container(
                     child: Text(
                       "expertise_area$index",
-                      style:
-                          GoogleFonts.spaceGrotesk().copyWith(fontSize: 15.0),
+                      style: TextStyle(fontFamily: "Space", fontSize: 15.0),
                     ),
                     decoration: BoxDecoration(
                         color: Colors.blue.withOpacity(0.2),
