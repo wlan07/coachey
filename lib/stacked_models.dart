@@ -1,8 +1,8 @@
 import 'package:coach_finder/expanded_panel.dart';
 import 'package:flutter/material.dart';
 
-class StackedModels extends StatelessWidget {
-  const StackedModels({Key? key}) : super(key: key);
+class StackedPanels extends StatelessWidget {
+  const StackedPanels({Key? key}) : super(key: key);
 
   static const List<ExpandedModel> _list = [
     ExpandedModel(

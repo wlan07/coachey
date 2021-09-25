@@ -50,9 +50,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Material(
       color: Color(0xff546bff),
       child: DefaultTextStyle(
-        style: fonts.GoogleFonts.bebasNeue().copyWith(
+        maxLines: 2,
+        style: fonts.GoogleFonts.luckiestGuy().copyWith(
           color: Colors.white,
-          fontSize: 70.0,
+          fontSize: 45.0,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const Expanded(
               flex: 5,
-              child: StackedModels()
+              child: StackedPanels()
             )
           ],
         ),
