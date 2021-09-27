@@ -11,7 +11,7 @@ class ExpandedPanel extends StatelessWidget {
 
   final ExpandedModel model;
 
-  void _onSlideUp(BuildContext context) {
+  void _onSlide(BuildContext context) {
     Navigator.of(context).push(PageRouteBuilder(
         reverseTransitionDuration: const Duration(milliseconds: 400),
         transitionDuration: const Duration(milliseconds: 500),
@@ -34,7 +34,7 @@ class ExpandedPanel extends StatelessWidget {
       widthFactor: 0.8,
       child: GestureDetector(
         onVerticalDragStart: (_) {
-          _onSlideUp(context);
+          _onSlide(context);
         },
         child: Hero(
           tag: "BOX_COLOR_TRANSITION${model.title}",

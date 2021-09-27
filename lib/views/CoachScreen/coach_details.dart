@@ -15,6 +15,7 @@ class CoachDetails extends StatefulWidget {
 }
 
 class _CoachDetailsState extends State<CoachDetails> {
+  
   late ValueNotifier<Animation<Alignment>> imageSlideAnimation;
 
   @override

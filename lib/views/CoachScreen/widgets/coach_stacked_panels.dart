@@ -14,21 +14,39 @@ class CoachStackedPanels extends StatefulWidget {
 
 class _CoachStackedPanelsState extends State<CoachStackedPanels>
     with TickerProviderStateMixin {
+
+
+
+  /// RETURN LIST OF INTIAL TOP MARGIN OF THE STACKED CARD ACCORDING     
+  /// TO THE GIVEN HEIGHT
+  
   List<double> _getInitialTopMargin(double height) {
     _height = height;
 
     return [height * 0.2, height * 0.35, height * 0.55];
   }
 
+
+  // THE BOTTOM MARGIN FACTOR OF THE FOLLOWING 3 STACKED CARDS
   static const List<double> bottomMarginFactor = [0.2, 0.1, 0.03];
 
+
+  /// RETURN LIST OF HEADER HEIGHT OF THE STACKED CARD ACCORDING     
+  /// TO THE GIVEN HEIGHT 
   List<double> _getHeadersHeight(double height) {
     return [height * 0.12, height * 0.1, height * 0.1];
   }
 
   late double _height;
 
+
+  // THE CONTROLLER OF THE INITIAL SLIDE ANIMATION WHEN THE THIS SCREEN POP UP
+  
   late AnimationController translateanimationController;
+  
+
+  // THE CONTROLLER OF THE SLIDE ANIMATION OF EACH ONE FROM THE STACKED CARDS WHEN A SLIDE DETECTED
+
   late AnimationController slideAnimationController;
 
   late Animation<double> translateAnimation;
@@ -64,8 +82,12 @@ class _CoachStackedPanelsState extends State<CoachStackedPanels>
     translateanimationController.forward();
   }
 
-  void _onSlideUp(int index, List<bool> _) {
-    log(_.toString());
+  void _onSlide(int index, List<bool> _) {
+
+
+    /// HERE THERE IS SOME MATHEMATIC CALCULATIONS 
+    /// TO DETERMINE THE NEW OFFSET OF EACH STACKED CARD
+    /// TO ANIMATE TO AFTER EACH SLIDE
 
     // IF THE CURRENT PANEL TO ANIMATE NOT OPENED
     if (!_[index]) {
@@ -100,6 +122,8 @@ class _CoachStackedPanelsState extends State<CoachStackedPanels>
 
   @override
   void dispose() {
+
+    // DISPOSE ANIMATION CONTROLLERS FOR AVOID MEMORY LEAKS 
     translateanimationController.dispose();
     slideAnimationController.dispose();
     super.dispose();
@@ -111,9 +135,9 @@ class _CoachStackedPanelsState extends State<CoachStackedPanels>
     Offset(-80.0, 100.0)
   ];
 
+
   @override
   Widget build(BuildContext context) {
-    log("**************CoachStackedPanels BUILDED**************");
 
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
@@ -140,7 +164,7 @@ class _CoachStackedPanelsState extends State<CoachStackedPanels>
                         topmargin: constraints.maxHeight * 0.05,
                         bottomMargin: _height * bottomMarginFactor[index],
                         headerHeight: _headersHeight[index],
-                        onSlideUp: _onSlideUp,
+                        onSlideUp: _onSlide,
                         offsets: _offsetsToSlideToNotifier,
                         index: index,
                         animation: slideAnimation,

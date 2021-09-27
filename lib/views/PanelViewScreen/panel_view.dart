@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:coach_finder/data/data.dart';
-import 'package:coach_finder/views/CoachScreen/widgets/coach_card.dart';
+import 'package:coach_finder/views/PanelViewScreen/widgets/coach_card.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/expanded_panel.dart';
@@ -16,6 +16,9 @@ class DetailedPanel extends StatefulWidget {
 
 class _DetailedPanelState extends State<DetailedPanel>
     with SingleTickerProviderStateMixin {
+
+
+  // the controller of the slide animation of the list view items 
   late AnimationController animationController;
 
   @override
@@ -25,11 +28,16 @@ class _DetailedPanelState extends State<DetailedPanel>
       vsync: this,
       duration: const Duration(milliseconds: 800),
     );
+
+
+    // forward the animation
     animationController.forward();
   }
 
   @override
   void dispose() {
+
+    // dispose the animation controller for avoiding memory leaks 
     animationController.dispose();
     super.dispose();
   }

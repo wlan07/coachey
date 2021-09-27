@@ -6,6 +6,7 @@ import 'package:coach_finder/views/CoachScreen/widgets/straggered_photos.dart';
 import 'package:flutter/material.dart';
 
 class CoachExpandedPanel extends StatefulWidget {
+  
   const CoachExpandedPanel(
       {Key? key,
       required this.index,

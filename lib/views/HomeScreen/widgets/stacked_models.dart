@@ -34,6 +34,11 @@ class StackedPanels extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
+
+
+        // I've used Layout builder to get the current widget constraints 
+
+
         final topMargin = constraints.maxHeight * 0.2;
         final width = constraints.maxWidth;
         final height = constraints.maxHeight;
@@ -41,6 +46,8 @@ class StackedPanels extends StatelessWidget {
         return Stack(
           alignment: Alignment.center,
           children: [
+
+            // those are the 3 stacked Panels
             ...List.generate(
                 _list.length,
                 (index) => Positioned(
@@ -54,6 +61,7 @@ class StackedPanels extends StatelessWidget {
                         model: _list[index],
                       ),
                     )),
+            // this the custom shaped bottom nav bar
             Align(
               alignment: Alignment.bottomCenter,
               child: BottomNavBar(

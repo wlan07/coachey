@@ -6,12 +6,17 @@ import 'views/HomeScreen/home_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+
+
+  // ENTER THE FULL SCREEN MODE
   await SystemChrome.setEnabledSystemUIOverlays([]);
 
-  runApp(MyApp());
+  runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
+
   const MyApp();
 
   @override
@@ -26,5 +31,7 @@ class MyApp extends StatelessWidget {
       home: const HomeScreen(),
     );
   }
+
+
 }
 
